@@ -11,14 +11,13 @@ https://drive.google.com/file/d/1sIv9rb6PizW9sfts9eVu0BkLYWLjysiT/view?usp=shari
 
 **Problem:**
 
-Create a file named story.txt with some text.
-Write a program that reads the file and prints its content.
+Write a function that takes a file and append the text "Hello, world!" inside it.
 
 
 **Example**
 
-      Inside story.txt: "This file can have anything"
-      Output: "This file can have anything"
+      Inside file: "example text "
+      Inside file after append: "example text Hello, world!"
 
 ---
 
@@ -26,12 +25,16 @@ Write a program that reads the file and prints its content.
 
 **Problem:**
 
-Write a program that asks the user for their name and age, then writes this information to a file called user_info.txt.
+Write a function that checks if given file is empty and returns False if it contains no text, True if it contains text.
 
 
 **Example**
 
-      Inside user_info.txt: "Name: Bob, Age: 56"
+      Inside file: "this file is not empty"
+      Output: True
+      
+      Inside file: ""
+      Output: False
 
 ---
 
@@ -39,13 +42,17 @@ Write a program that asks the user for their name and age, then writes this info
 
 **Problem:**
 
-Write a program that reads a text file and prints the number of words in it.
+Write a function that reads a given file and count how many lines it has.
 
 
 **Example**
 
-      Inside sample.txt: "How many words are in here?"
-      Output: 6
+      Inside file:       "1st line"      
+                         "2nd line"
+                         "3rd line"
+                         "4th line"
+                         
+      Output: 4
 
 ---
 
@@ -53,11 +60,12 @@ Write a program that reads a text file and prints the number of words in it.
 
 **Problem:**
 
-Write a program that reads a file and prints the longest word.
+Write a function that reads a file and print the total number of characters (excluding spaces).
 
  
 **Example**
       
-      Inside sample.txt: "What's the longest word in here?"
-      Output: "longest"
+      Inside file: "How many characters in here?"
+      Output: 23
+      
 ---
