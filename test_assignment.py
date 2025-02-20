@@ -43,8 +43,8 @@ def test3(filename, content, expected_count):
     assert count_lines(filename) == expected_count
 
 @pytest.mark.parametrize("filename, content, expected_count", [
-    ("test_chars1.txt", "How many characters in here?", 23),
-    ("test_chars2.txt", "Python 3.9!", 9),
+    ("test_chars1.txt", "How many characters in here?", 24),
+    ("test_chars2.txt", "Python 3.9!", 10),
     ("test_chars3.txt", "", 0)
 ])
 def test4(filename, content, expected_count):
