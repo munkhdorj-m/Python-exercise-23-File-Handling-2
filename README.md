@@ -66,6 +66,6 @@ Write a function that reads a file and print the total number of characters (exc
 **Example**
       
       Inside file: "How many characters in here?"
-      Output: 23
+      Output: 24
       
 ---
