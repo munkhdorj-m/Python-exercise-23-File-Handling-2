@@ -1,52 +1,54 @@
 import pytest
-import inspect
 from assignment import (
-    create_and_read_file,
-    write_user_info,
-    count_words_in_file,
-    find_longest_word_in_file
+    append_hello_world,
+    is_file_nonempty,
+    count_lines,
+    count_characters_excluding_spaces
 )
 
-@pytest.mark.parametrize("filename, content", [
-    ("test_story.txt", "Once upon a time in a faraway land."),
-    ("test_story2.txt", "Python is a powerful programming language."),
+@pytest.mark.parametrize("filename, content, expected_content", [
+    ("test_append.txt", "example text ", "example text Hello, world!"),
+    ("test_append2.txt", "", "Hello, world!")
 ])
-def test1(filename, content):
+def test1(filename, content, expected_content):
     with open(filename, "w") as f:
         f.write(content)
     
-    assert create_and_read_file(filename) is None  # Assuming it prints content but returns nothing
-
-@pytest.mark.parametrize("filename, name, age", [
-    ("test_user1.txt", "Alice", 25),
-    ("test_user2.txt", "Bob", 30),
-])
-def test2(filename, name, age):
-    write_user_info(filename, name, age)
+    append_hello_world(filename)
     
     with open(filename, "r") as f:
-        content = f.read().strip()
+        result = f.read().strip()
     
-    assert content == f"name: {name}, age: {age}" or content == f"Name: {name}, Age: {age}"
+    assert result == expected_content
+
+@pytest.mark.parametrize("filename, content, expected_result", [
+    ("test_nonempty1.txt", "this file is not empty", True),
+    ("test_nonempty2.txt", "", False)
+])
+def test2(filename, content, expected_result):
+    with open(filename, "w") as f:
+        f.write(content)
+    
+    assert is_file_nonempty(filename) == expected_result
 
 @pytest.mark.parametrize("filename, content, expected_count", [
-    ("test_words.txt", "Hello world!", 2),
-    ("test_words2.txt", "This is a test file with multiple words.", 8),
-    ("empty.txt", "", 0)
+    ("test_lines1.txt", "1st line\n2nd line\n3rd line\n4th line", 4),
+    ("test_lines2.txt", "Single line", 1),
+    ("test_lines3.txt", "", 0)
 ])
 def test3(filename, content, expected_count):
     with open(filename, "w") as f:
         f.write(content)
     
-    assert count_words_in_file(filename) == expected_count
+    assert count_lines(filename) == expected_count
 
-@pytest.mark.parametrize("filename, content, expected_word", [
-    ("test_longest.txt", "Find the longest word in this file.", "longest"),
-    ("test_longest2.txt", "Short words only.", "Short"),
-    ("empty.txt", "", "")
+@pytest.mark.parametrize("filename, content, expected_count", [
+    ("test_chars1.txt", "How many characters in here?", 23),
+    ("test_chars2.txt", "Python 3.9!", 9),
+    ("test_chars3.txt", "", 0)
 ])
-def test4(filename, content, expected_word):
+def test4(filename, content, expected_count):
     with open(filename, "w") as f:
         f.write(content)
     
-    assert find_longest_word_in_file(filename) == expected_word
+    assert count_characters_excluding_spaces(filename) == expected_count
